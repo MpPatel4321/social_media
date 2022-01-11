@@ -1,0 +1,46 @@
+<h2 class='float-left'>
+<% if @user.avatar.attached? %>
+	<img src="<%=(url_for(@user.avatar))%>" class="avatar float-left">
+<% else %>
+	<img src="/assets/avatar.png" class="avatar float-left">
+<% end %>
+<%= @user.first_name %> <%= @user.last_name %></h2>
+<%= render 'layouts/nav' %>
+
+<div class='clearfix'></div>
+<hr>
+
+<div class="row" >
+  <div class="col-md-6">
+    <div class="show_post">
+      <div class="card">
+        <div class="card-header">
+          Profile
+          <div class="float-right">
+            <%= link_to 'Edit Profile', edit_user_registration_path(@user) %>
+          </div>
+        </div>
+        <table class="table table-bordered mb-0">
+          <tbody>
+              <tr>
+                <th> Name </th>
+                <td><%= current_user.first_name %> <%= current_user.last_name %></td>
+              </tr>
+              <tr>
+                <th> Email </th>
+                <td><%= current_user.email %></td>
+              </tr>
+              <tr>
+                <th> Date Of Birth </th>
+                <td><%= current_user.dob %></td>
+              </tr>
+              <tr>
+                <th> Email </th>
+                <td><%= current_user.country_code %> <%= current_user.mob_no %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

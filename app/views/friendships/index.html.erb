@@ -1,0 +1,43 @@
+<h2 class='float-left'>Posts</h2>
+<%= render 'layouts/nav' %>
+
+
+<div class='clearfix'></div>
+<hr>
+
+<div class="row" >
+  <div class="col-md-6">
+    <div class="show_post">
+      <div class="show_post">
+        <div class="card">
+          <table class="table">
+            <% @friends.each do |friend| %>
+              <% if (friend.friend_id == current_user.id) %>
+                <% user = User.find(friend.user_id) %>
+              <% else %>
+                <% user = User.find(friend.friend_id) %>
+              <% end %>
+                <tbody>
+                  <tr>
+                    <th><% if user.avatar.attached? %>
+                        <img src="<%=(url_for(user.avatar))%>" class="avatar float-left">
+                      <% else %>
+                        <img src="/assets/avatar.png" class="avatar float-left">
+                      <% end %><%=user.first_name %> <%= user.last_name %></th>
+                    <td><ul class="navbar-nav mr-auto float-right">
+                          <li class="nav-item <%= (friendships_path) %>">
+                            <%= link_to 'Message', "#", class: 'btn btn-primary' %>
+                            <%= link_to 'Remove Friend', friendship_path(user.id), method: :delete, class: 'btn btn-danger' %>
+                          </li>
+                        </ul></td>
+                  </tr>
+                </tbody>
+            <% end %>
+          </table>
+        </div><hr>
+      </div> 
+    </div>
+  </div>
+</div>
+
+
