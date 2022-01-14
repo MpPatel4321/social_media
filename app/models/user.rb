@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :friendships, class_name: "Friendship", dependent: :destroy  
   has_many :friends, class_name: "Friendship", through: :friendships
+  has_many :posts
+  has_one :like
+
 end

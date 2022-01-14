@@ -1,0 +1,27 @@
+<div class='clearfix'></div>
+<div class="row" >
+  <div class="col-md-6">
+    <div class="card">
+			<div class="show_post">
+				<div class="card">
+					<table class="table">
+						<tbody>
+						  <%= render "posts/post", post: @post %>
+						  <tr>
+						    <td><div class="panel-body">
+						    	<%= render 'likes/like', post: @post %>
+						            <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+						          <% if (@post.user.id == current_user.id) %>
+						            <%= link_to 'Edit Post', edit_post_path(@post), remote: true, class: 'btn btn-primary' %>
+						            <%= link_to "Delete Post", "#{}", data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+						          <% end %>
+						         </div>
+						    </td>
+						  </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

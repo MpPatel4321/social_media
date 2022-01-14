@@ -1,0 +1,5 @@
+<% if user.avatar.attached? %>
+  <img src="<%=(url_for(user.avatar))%>" class="avatar float-left">
+<% else %>
+  <img src="/assets/avatar.png" class="avatar float-left">
+<% end %>

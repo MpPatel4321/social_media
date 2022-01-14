@@ -1,0 +1,59 @@
+<div class='clearfix'></div>
+<div class="row" >
+  <div class="col-md-6">
+    <div class="card">
+      <div class="show_post">
+        <div class="card">
+          <%= form_for @post do |f| %>
+          <table class="table">
+            <tbody>
+              <div class="row">
+                <div class="col-md-8">
+                  <% if @post.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                       <%= pluralize(@post.errors.count, "error") %>
+                       prohibited this post from being saved:</h2>
+                      <ul>
+                      <% @post.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                  <tr>
+                    <td><div class="form-group">
+                      <b><%= f.label :content, class: "control-label" %></b>
+                      <%= f.text_area :content, class: "form-control" %>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td><div class="form-group">
+                      <b><%= f.label :image, class: "control-label" %></b>
+                      <%= f.file_field :avatar, class: "form-control" %>
+                    </div></td>
+                  </tr>
+                  <div class="form-group">
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.hidden_field :is_post, value: true %>
+                  </div>
+                </div>
+              </div>
+            </tbody>
+          </table>
+          <table class="table">
+              <tbody>
+                  <tr>
+                    <td><div class="panel-body text-center">
+                          <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+                          <%= f.submit "Create Post", class: "btn btn-primary" %>
+                        </div></td>
+                  </tr>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

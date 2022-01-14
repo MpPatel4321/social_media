@@ -1,0 +1,23 @@
+<div class="show_post">
+  <% posts.each do |post| %>
+    <div class="card">
+      <table class="table">
+        <tbody>
+          <%= render "posts/post", post: post %>
+          <tr>
+            <td><div class="panel-body text-center">
+                  <ul class="nav nav-pills float-right">
+                    <li class="nav-item" >
+                      <%= render 'likes/like', post: post %>
+                      <%= link_to 'Show Post', post_path(post) %>
+                    </li>
+                  </ul>
+                 </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div><hr>
+  <% end %>
+</div>
