@@ -1,27 +1,28 @@
+<h2 class='float-left'>
+<%= render "users/profile_avatar", user: user %>
+<%= user.first_name %> <%= user.last_name %></h2>
 <ul class="nav nav-pills float-right">
-  <li class="nav-item <%#= active(blast.admin_path) %>" >
-  <%= link_to user_path(current_user),
+  <li class="nav-item <%= active(users_path) %>" >
+  <%= link_to user_path(user),
           class: "nav-link #{users_path}" do %>
      Profile
        <% end %>
   </li>
-  <li class="nav-item <%#= (blast.admin_messages_path) %>">
+  <li class="nav-item <%#= messages_path %>">
     <%= link_to 'Messages', "#",
                           class: "nav-link" %>
   </li>
-  <li class="nav-item <%#= active(blast.admin_friendships_path) %>">
-    <% friend_count = Friendship.where(user_id: current_user.id).count %>
-    <% friend_count += Friendship.where(friend_id: current_user.id).count %>
-    <%= link_to friendships_path, class: "nav-link #{friendships_path}" do %>
+  <li class="nav-item <%= active(friendships_path) %>">
+    <% friend_count = Friendship.where(user_id: user.id, is_friend: true).count %>
+    <% friend_count += Friendship.where(friend_id: user.id, is_friend: true).count %>
+    <%= link_to friendships_path(:user_id => user.id), class: "nav-link #{friendships_path}" do %>
       Friends (<%= friend_count %>)
-      <!-- <span class="badge">(<%#= current_user.friendships.count %>)</span> -->
+      <!-- <span class="badge">(<%= friend_count %>)</span> -->
      <% end %>
   </li>
   <li class="nav-item <%#= active(blast.admin_posts_path) %>">
-  <%= link_to "#",
-          class: "nav-link" do %>
-     Posts
-          <span class="badge">(<%= current_user.id %>)</span>
+  <%= link_to posts_path(:user_id => user.id), class: "nav-link" do %>
+     Posts (<%= user.posts.count %>)
    <% end %>
 </li>
 </ul>

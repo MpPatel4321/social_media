@@ -1,0 +1,15 @@
+<tr>
+  <th><%= link_to user_path(post.user) do %>
+    <%= render "users/profile_avatar", user: post.user %>
+  	<%= post.user.first_name %> <%= post.user.last_name %>
+    <% end %>
+    <p style="font-size: small;"><%= post.created_at %></p></th>
+</tr>
+<tr>
+  <td><%= post.content %></td>
+</tr>
+<tr>
+  <% if post.avatar.attached? %>
+    <td><img src="<%=(url_for(post.avatar))%>" class="float-left"></td>
+  <% end %>
+</tr>

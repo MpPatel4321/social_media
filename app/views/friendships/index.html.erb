@@ -1,7 +1,4 @@
-<h2 class='float-left'>Posts</h2>
-<%= render 'layouts/nav' %>
-
-
+<%= render 'layouts/nav', user: @user %>
 <div class='clearfix'></div>
 <hr>
 
@@ -19,17 +16,16 @@
               <% end %>
                 <tbody>
                   <tr>
-                    <th><% if user.avatar.attached? %>
-                        <img src="<%=(url_for(user.avatar))%>" class="avatar float-left">
-                      <% else %>
-                        <img src="/assets/avatar.png" class="avatar float-left">
-                      <% end %><%=user.first_name %> <%= user.last_name %></th>
-                    <td><ul class="navbar-nav mr-auto float-right">
-                          <li class="nav-item <%= (friendships_path) %>">
-                            <%= link_to 'Message', "#", class: 'btn btn-primary' %>
-                            <%= link_to 'Remove Friend', friendship_path(user.id), method: :delete, class: 'btn btn-danger' %>
-                          </li>
-                        </ul></td>
+                    <th><%= render "users/profile_avatar", user: user %>
+                      <%=user.first_name %> <%= user.last_name %></th>
+                    <% if current_user.id == @user.id %>
+                      <td><ul class="navbar-nav mr-auto float-right">
+                            <li class="nav-item <%= (friendships_path) %>">
+                              <%= link_to 'Message', "#", class: 'btn btn-primary', style: "width: 115px;" %>
+                              <%= link_to 'Remove', friendship_path(user.id), method: :delete, class: 'btn btn-danger', style: "width: 115px;" %>
+                            </li>
+                          </ul></td>
+                    <% end %>
                   </tr>
                 </tbody>
             <% end %>

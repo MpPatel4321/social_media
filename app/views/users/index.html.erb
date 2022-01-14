@@ -1,6 +1,4 @@
 <div class='clearfix'></div>
-<hr>
-
 <div class="row" >
   <div class="col-md-6">
     <div class="show_post">
@@ -11,23 +9,11 @@
               <% if (current_user.id != find_friend.id) %>
                 <tbody>
                   <tr>
-                    <th><% if find_friend.avatar.attached? %>
-						            <img src="<%=(url_for(find_friend.avatar))%>" class="avatar float-left">
-						          <% else %>
-						            <img src="/assets/avatar.png" class="avatar float-left">
-						          <% end %>
+                    <th><%= render "profile_avatar", user: find_friend %>
 						          <%=find_friend.first_name %> <%= find_friend.last_name %></th>
                     <td><ul class="navbar-nav mr-auto">
-                          <li class="nav-item <%#= new_friendship_path %>" style="text-align: center;">
-                          <% user = (Friendship.where( user_id: current_user.id, friend_id: find_friend.id)) %>
-                            <% friend = (Friendship.where( user_id: find_friend.id, friend_id: current_user.id)) %>
-                            <% friend = user + friend %>
-                            <% if friend.blank? %>
-												  	  <%= link_to 'Add Friend', new_friendship_path(friend_id: find_friend.id), class: 'btn btn-primary', style: "width: 230px;" %>
-                            <% else %>
-                              <%= link_to 'Message', "#", class: 'btn btn-primary' %>
-                              <%= link_to 'Remove Friend', friendship_path(find_friend.id), method: :delete, class: 'btn btn-danger' %>
-                            <% end %>
+                          <li class="nav-item user-li-<%= find_friend.id %>" style="text-align: center;">
+                            <%= render "user_button" , find_friend: find_friend %>
 												  </li>
                         </ul></td>
                   </tr>
