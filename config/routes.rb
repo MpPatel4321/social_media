@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'posts/index'
+  # get 'posts/index'
   devise_for :users
   root to: 'deshboard#index'
   resources "deshboard"
@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'friend_requests', to: 'friendships#friend_request'
   resources "posts"
   resources "likes"
+  resources "messages"
+  post 'create_conversation', to: 'messages#create_conversation'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
