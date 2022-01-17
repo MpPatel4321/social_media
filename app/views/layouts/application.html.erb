@@ -8,7 +8,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
-    <%= turbo_include_tags %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
   </head>
 
   <body>
@@ -68,6 +69,11 @@
 
     <%= yield %>
   </div>
+  <div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="popuptext" id="myPopup"></div>
+  </div>
+</div>
   </body>
 </html>
 <style>

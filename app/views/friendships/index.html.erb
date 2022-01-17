@@ -21,7 +21,7 @@
                     <% if current_user.id == @user.id %>
                       <td><ul class="navbar-nav mr-auto float-right">
                             <li class="nav-item <%= (friendships_path) %>">
-                              <%= link_to 'Message', create_conversation_path(friendship_id: friend.id), method: :post, class: 'btn btn-primary', style: "width: 115px;" %>
+                              <%= link_to 'Message', message_path(friend), remote: true, class: 'btn btn-primary', style: "width: 115px;" %>
                               <%= link_to 'Remove', friendship_path(user.id), method: :delete, class: 'btn btn-danger', style: "width: 115px;" %>
                             </li>
                           </ul></td>
