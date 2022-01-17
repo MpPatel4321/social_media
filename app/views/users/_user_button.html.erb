@@ -11,6 +11,6 @@
     <%= link_to 'Cancle Request', friendship_path(find_friend.id), method: :delete, class: 'btn btn-danger', style: "width: 230px;" %>
   <% end %>
 <% else %>
-  <%= link_to 'Message', "#", class: 'btn btn-primary', style: "width: 115px;" %>
+  <%= link_to 'Message', create_conversation_path(friendship_id: friend[0].id), method: :post, class: 'btn btn-primary', style: "width: 115px;" %>
   <%= link_to 'Remove', friendship_path(find_friend.id), method: :delete, class: 'btn btn-danger', style: "width: 115px;" %>
 <% end %>
