@@ -8,16 +8,23 @@
 						<tbody>
 						  <%= render "posts/post", post: @post %>
 						  <tr>
-						    <td><div class="panel-body">
-						    	<%= render 'likes/like', post: @post %>
-						            <%= link_to 'Back', :back, class: 'btn btn-primary' %>
-						          <% if (@post.user.id == current_user.id) %>
-						            <%= link_to 'Edit Post', edit_post_path(@post), remote: true, class: 'btn btn-primary' %>
-						            <%= link_to "Delete Post", "#{}", data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
-						          <% end %>
-						         </div>
-						    </td>
-						  </tr>
+		            <td><div class="panel-body text-center">
+		                  <ul class="nav nav-pills float-right">
+		                    <li class="nav-item" >
+		                      <%= render 'likes/like', post: @post %>
+		                      <%= render 'comments/comment_button', post: @post %>
+		                      <%= link_to 'Back', :back %>
+		                    </li>
+		                  </ul>
+		                 </div>
+		            </td>
+		          </tr>
+		          <tr><td>
+		            <div class="comment_form"></div>
+		            <ul class="show_comment-<%=@post.id%>">
+		            	<%= render @post.comments %>
+		            </ul>
+		          </td></tr>
 						</tbody>
 					</table>
 				</div>

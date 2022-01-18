@@ -2,15 +2,15 @@
 <% friend = (Friendship.where( user_id: find_friend.id, friend_id: current_user.id)) %>
 <% friend = user + friend %>
 <% if friend.blank? %>
-  <%= link_to 'Add Friend', friendships_path(friend_id: find_friend.id), method: :post, class: 'btn btn-primary', style: "width: 230px;" %>
+  <%= link_to 'Add Friend', friendships_path(friend_id: find_friend.id), method: :post, remote: true, class: 'btn btn-primary', style: "width: 230px;" %>
 <% elsif !(friend[0].is_friend) %>
   <% if user.blank? %>
-    <%= link_to 'Accept', friendship_path(friend[0].id),method: :put, class: 'btn btn-success', style: "width: 115px;" %>
-    <%= link_to 'Cancel', friendship_path(find_friend.id), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Accept', friendship_path(friend[0].id),method: :put, remote: true, class: 'btn btn-success', style: "width: 115px;" %>
+    <%= link_to 'Cancel', friendship_path(find_friend.id), method: :delete, remote: true, class: 'btn btn-danger', style: "width: 115px;" %>
   <% else %>
-    <%= link_to 'Cancel Request', friendship_path(find_friend.id), method: :delete, class: 'btn btn-danger', style: "width: 230px;" %>
+    <%= link_to 'Cancel Request', friendship_path(find_friend.id), method: :delete, remote: true, class: 'btn btn-danger', style: "width: 230px;" %>
   <% end %>
 <% else %>
   <%= link_to 'Message', message_path(friend[0]), remote: true, class: 'btn btn-primary', style: "width: 115px;" %>
-  <%= link_to 'Remove', friendship_path(find_friend.id), method: :delete, class: 'btn btn-danger', style: "width: 115px;" %>
+  <%= link_to 'Remove', friendship_path(find_friend.id), method: :delete, remote: true, class: 'btn btn-danger', style: "width: 115px;" %>
 <% end %>

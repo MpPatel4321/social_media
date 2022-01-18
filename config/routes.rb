@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources "posts"
   resources "likes"
   resources "messages"
-  post 'create_conversation', to: 'messages#create_conversation'
+  resources "comments"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

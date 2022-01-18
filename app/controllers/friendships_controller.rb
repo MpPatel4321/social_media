@@ -10,15 +10,13 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = Friendship.create(user_id: current_user.id, friend_id: params[:friend_id])
-    
-    flash[:notice] = "Request Sent"    
-    redirect_to request.referrer
+    @friend = User.find(params[:friend_id])
   end
 
   def update
     @friendship = Friendship.find(params[:id])
     @friendship.update(is_friend: true)
-    redirect_to friend_requests_path
+    @friend = User.find(@friendship.user_id)
   end
 
   def destroy
@@ -27,10 +25,12 @@ class FriendshipsController < ApplicationController
     else
       @friendship = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
     end
+    conversation = @friendship.conversation
+    messages = conversation.messages unless conversation.nil?
+    @friendship.conversation.messages.destroy_all unless messages.nil?
+    @friendship.conversation.destroy unless conversation.nil?
     @friendship.destroy
-
-    flash[:alert] = "Removed successfully"
-    redirect_to request.referrer
+    @friend = User.find(params[:id])
 
   end
 
