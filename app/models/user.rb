@@ -9,5 +9,6 @@ class User < ApplicationRecord
   has_many :friends, class_name: "Friendship", through: :friendships
   has_many :posts
   has_one :like
+  has_many :messages
 
 end
