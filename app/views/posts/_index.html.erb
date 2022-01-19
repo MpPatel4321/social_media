@@ -6,7 +6,7 @@
 <hr/>
 <div class="row scroll" >
   <div class="col-md-6">
-    <div class="card">
+    <div class="card" style="width: 540px;">
 			<%= render "posts", posts: @posts %>
 		</div>
   </div>
@@ -16,12 +16,10 @@
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function() {
     modal.style.display = "none";
-    document.location.reload(true)
   }
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
-      document.location.reload(true)
     }
   }
 </script>
