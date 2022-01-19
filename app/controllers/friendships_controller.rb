@@ -25,10 +25,6 @@ class FriendshipsController < ApplicationController
     else
       @friendship = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
     end
-    conversation = @friendship.conversation
-    messages = conversation.messages unless conversation.nil?
-    @friendship.conversation.messages.destroy_all unless messages.nil?
-    @friendship.conversation.destroy unless conversation.nil?
     @friendship.destroy
     @friend = User.find(params[:id])
 
