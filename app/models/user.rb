@@ -4,12 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy
   has_many :friendships, class_name: "Friendship", dependent: :destroy  
   has_many :friends, class_name: "Friendship", through: :friendships
-  has_many :posts
-  has_one :like
-  has_many :messages
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_one :like, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 end

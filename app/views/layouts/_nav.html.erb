@@ -3,26 +3,26 @@
 <%= user.first_name %> <%= user.last_name %></h2>
 <ul class="nav nav-pills float-right">
   <li class="nav-item <%= active(users_path) %>" >
-  <%= link_to user_path(user),
+  <%= link_to user_path(user), remote: (user != current_user),
           class: "nav-link #{users_path}" do %>
      Profile
        <% end %>
   </li>
   <% if (user.id == current_user.id) %>
-    <li class="nav-item <%#= messages_path %>">
+    <li class="nav-item <%= active(messages_path) %>">
       <%= link_to 'Messages', messages_path, class: "nav-link" %>
     </li>
   <% end %>
   <li class="nav-item <%= active(friendships_path) %>">
     <% friend_count = Friendship.where(user_id: user.id, is_friend: true).count %>
     <% friend_count += Friendship.where(friend_id: user.id, is_friend: true).count %>
-    <%= link_to friendships_path(:user_id => user.id), class: "nav-link #{friendships_path}" do %>
+    <%= link_to friendships_path(:user_id => user.id), remote: (user != current_user), class: "nav-link #{friendships_path}" do %>
       Friends (<%= friend_count %>)
      <% end %>
   </li>
-  <li class="nav-item <%#= active(blast.admin_posts_path) %>">
-  <%= link_to posts_path(:user_id => user.id), class: "nav-link" do %>
+  <li class="nav-item <%= active(posts_path) %>">
+  <%= link_to posts_path(:user_id => user.id), remote: (user != current_user), class: "nav-link" do %>
      Posts (<%= user.posts.count %>)
    <% end %>
-</li>
+  </li>
 </ul>

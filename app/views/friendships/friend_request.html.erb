@@ -8,8 +8,11 @@
             <% @friend_requests.each do |request| %>
               <tbody>
                 <tr>
-                  <th><%= render "users/profile_avatar", user: request.user %>
-					          <%=request.user.first_name %> <%= request.user.last_name %></th>
+                  <th><%= link_to user_path(request.user), remote: true do %>
+                        <%= render "users/profile_avatar", user: request.user %>
+    					          <%=request.user.first_name %> <%= request.user.last_name %>
+                      <% end %>     
+                        </th>
                   <td><ul class="navbar-nav mr-auto">
                           <li class="nav-item user-li-<%= request.user.id %>" style="text-align: center;">
                             <%= render "users/user_button" , find_friend: request.user %>
