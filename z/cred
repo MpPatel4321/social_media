@@ -1,0 +1,8 @@
+MpPatel4321
+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
+mppatel7268
+
+
+
+
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p

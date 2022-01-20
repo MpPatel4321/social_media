@@ -1,0 +1,52 @@
+<% if current_user != @user %>
+  <span class="close">&times;</span>
+<% end %>
+<%= render 'layouts/nav', user: @user %>
+<div class='clearfix'></div>
+<hr>
+<div class="row scroll" >
+  <div class="col-md-6">
+    <div class="show_post">
+      <div class="show_post">
+        <div class="card">
+          <table class="table">
+            <% @friends.each do |friend| %>
+              <% if (friend.friend_id == @user.id) %>
+                <% user = User.find(friend.user_id) %>
+              <% else %>
+                <% user = User.find(friend.friend_id) %>
+              <% end %>
+                <tbody>
+                  <tr>
+                    <th><%= link_to user_path(user), remote: true do %>
+                          <%= render "users/profile_avatar", user: user %>
+                          <%=user.first_name %> <%= user.last_name %></th>
+                        <% end %>
+                    <% if current_user.id == @user.id %>
+                      <td><ul class="navbar-nav mr-auto">
+                          <li class="nav-item user-li-<%= user.id %>" style="text-align: center;">
+                            <%= render "users/user_button" , find_friend: user %>
+                          </li>
+                        </ul></td>
+                    <% end %>
+                  </tr>
+                </tbody>
+            <% end %>
+          </table>
+        </div><hr>
+      </div> 
+    </div>
+  </div>
+</div>
+<script>
+  var modal = document.getElementById("myModal");
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>

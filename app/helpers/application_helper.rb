@@ -3,6 +3,7 @@ module ApplicationHelper
 	  notice: 'alert alert-info',
 	  success: 'alert alert-success',
 	 }.freeze
+    
   def flash_class(level)
   	FLASH_CLASSES[level]
   end

@@ -1,0 +1,16 @@
+<% if (friend.user_id == current_user.id) %>
+  <% user = User.find(friend.friend_id) %>
+<% else %>
+  <% user = User.find(friend.user_id) %>
+<% end %>
+  
+<th><%= render "users/profile_avatar", user: user %>
+  <%=user.first_name %> <%= user.last_name %></th>
+<td>
+  <ul class="navbar-nav mr-auto float-right">
+    <li class="nav-item">
+      <%= link_to 'Message', message_path(friend), remote: true, class: 'btn btn-primary' %>
+    </li>
+  </ul>
+</td>
+   
