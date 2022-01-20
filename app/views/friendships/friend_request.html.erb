@@ -14,10 +14,10 @@
                       <% end %>     
                         </th>
                   <td><ul class="navbar-nav mr-auto">
-                          <li class="nav-item user-li-<%= request.user.id %>" style="text-align: center;">
-                            <%= render "users/user_button" , find_friend: request.user %>
-                          </li>
-                        </ul></td>
+                        <li class="nav-item user-li-<%= request.user.id %>" style="text-align: center;">
+                          <%= render "users/user_button" , find_friend: request.user %>
+                        </li>
+                      </ul></td>
                 </tr>
               </tbody>
             <% end %>

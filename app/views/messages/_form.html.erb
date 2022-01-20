@@ -1,0 +1,8 @@
+<ul class="navbar-nav table">
+  <%= form_for @message do |f| %>
+    <li><%= f.text_field :content, class: "form_width", autocomplete: 'off', id: "text" %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :conversation_id, value: @conversation.id %>
+        <%= f.submit "Send Message", data: { disable_with: false }, class: "btn btn-primary", id: "tester" %></li>
+  <% end %>
+</ul>

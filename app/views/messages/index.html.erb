@@ -1,0 +1,38 @@
+<%= render 'layouts/nav', user: current_user %>
+<div class='clearfix'></div><hr>
+<div class="row" >
+  <div class="col-md-6">
+    <div class="show_post">
+      <div class="show_post">
+        <div class="card">
+          <table class="table">
+            <tbody>
+            <tr><h6 align="center">Recent chats </h6></tr><hr/>
+              <% @recent_chat = recent_conversation(@friends) %>
+              <% @recent_chat.each do |friend| %>
+                <tr>
+                  <% if (!(friend.conversation).blank?) %>
+                    <%= render 'friends_list', friend: friend %>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <table class="table">
+            <tbody>
+            <tr><h6 align="center"> Friends </h6></tr><hr/>
+              <% @friends.each do |friend| %>
+                <tr>
+                  <% if ((friend.conversation).blank?) %>
+                    <%= render 'friends_list', friend: friend %>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+        </div><hr>
+      </div> 
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,7 @@
+$(".comment-<%=@post.id%>").html("<%= j render partial: 'comment_button', :locals => {:post => @post} %>");
+$(".show_comment-<%=@post.id%>").append("<%= j render partial: 'comment', :locals => {:comment => @post.comments.last} %>");
+$(".index_comment-<%=@post.id%>").append("<%= j render partial: 'comment', :locals => {:comment => @post.comments.last} %>");
+$(".comment_form").hide();
+<% if @post.comments.count > 3 %>
+	$(".index_comment-<%=@post.id%> li:first").remove();
+<% end %>
