@@ -18,9 +18,8 @@
               <% end %>
                 <tbody>
                   <tr>
-                    <th><%= link_to user_path(user), remote: true do %>
-                          <%= render "users/profile_avatar", user: user %>
-                          <%=user.first_name %> <%= user.last_name %></th>
+                    <th><%= link_to user_path(user), class: "link_to", remote: (user != current_user) do %>
+                          <%= render "users/profile_avatar", user: user %></th>
                         <% end %>
                     <% if current_user.id == @user.id %>
                       <td><ul class="navbar-nav mr-auto">

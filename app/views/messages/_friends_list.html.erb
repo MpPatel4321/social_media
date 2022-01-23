@@ -4,8 +4,9 @@
   <% user = User.find(friend.user_id) %>
 <% end %>
   
-<th><%= render "users/profile_avatar", user: user %>
-  <%=user.first_name %> <%= user.last_name %></th>
+<th><%= link_to user_path(user), class: "link_to", remote: true do %>
+      <%= render "users/profile_avatar", user: user %>
+    <% end %></th>
 <td>
   <ul class="navbar-nav mr-auto float-right">
     <li class="nav-item">
