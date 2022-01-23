@@ -6,8 +6,7 @@
   <% friend = User.find(@friendship.user_id) %>
 <% end %>
   <div class="friend_name">
-    <h5 class='float-left'><%= render "users/profile_avatar", user: friend %>
-      <%= friend.first_name %> <%= friend.last_name %></h5>
+    <h5 class='float-left'><%= render "users/profile_avatar", user: friend %></h5>
   </div>
 <div class='clearfix'></div>
 <hr>

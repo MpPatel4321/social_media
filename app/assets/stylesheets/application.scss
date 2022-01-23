@@ -13,6 +13,11 @@
  */
 @import "bootstrap";
 
+.link_to {
+  text-decoration: auto;
+  color: black;
+}
+
 .show {
   position: absolute;
   z-index: 1;

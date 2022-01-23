@@ -1,7 +1,6 @@
 <tr>
-  <th><%= link_to user_path(post.user), remote: (current_user != post.user) do %>
+  <th><%= link_to user_path(post.user), class: "link_to", remote: (current_user != post.user) do %>
     <%= render "users/profile_avatar", user: post.user %>
-  	<%= post.user.first_name %> <%= post.user.last_name %>
     <% end %>
     <p style="font-size: small;"><%= post.created_at %></p></th>
 </tr>

@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
 	FLASH_CLASSES = {
 	  notice: 'alert alert-info',
 	  success: 'alert alert-success',
@@ -9,7 +10,11 @@ module ApplicationHelper
   end
 
   def active(path)
-     current_page?(path) ? 'active' : ''
+    current_page?(path) ? 'active' : ''
+  end
+
+  def full_name(user)
+    full_name = user.first_name + " " + user.last_name
   end
 
   def recent_conversation(friends)
@@ -36,10 +41,6 @@ module ApplicationHelper
   		recent_chats << no_chat	
   	end
   	recent_chats
-  end
-
-  def dynamic_search(text)
-  	user = User.where(first_name: text)
   end
 
 end

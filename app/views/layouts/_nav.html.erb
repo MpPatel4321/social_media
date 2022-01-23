@@ -1,9 +1,8 @@
 <h2 class='float-left'>
-<%= render "users/profile_avatar", user: user %>
-<%= user.first_name %> <%= user.last_name %></h2>
+<%= render "users/profile_avatar", user: user %></h2>
 <ul class="nav nav-pills float-right">
   <li class="nav-item <%= active(users_path) %>" >
-  <%= link_to user_path(user), remote: (user != current_user),
+  <%= link_to user_path(user), class: "link_to", remote: (user != current_user),
           class: "nav-link #{users_path}" do %>
      Profile
        <% end %>
