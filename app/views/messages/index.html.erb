@@ -8,8 +8,7 @@
           <table class="table">
             <tbody>
             <tr><h6 align="center">Recent chats </h6></tr><hr/>
-              <% @recent_chat = recent_conversation(@friends) %>
-              <% @recent_chat.each do |friend| %>
+              <% recent_conversation(@friends).each do |friend| %>
                 <tr>
                   <% if (!(friend.conversation).blank?) %>
                     <%= render 'friends_list', friend: friend %>

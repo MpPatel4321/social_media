@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_121719) do
+ActiveRecord::Schema.define(version: 2022_02_02_100124) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,11 +42,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_121719) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "post_id", null: false
-    t.string "comment"
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -69,10 +70,11 @@ ActiveRecord::Schema.define(version: 2022_01_17_121719) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.string "likeble_type", null: false
+    t.integer "likeble_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["likeble_type", "likeble_id"], name: "index_likes_on_likeble"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -84,6 +86,18 @@ ActiveRecord::Schema.define(version: 2022_01_17_121719) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.integer "recipient_id", null: false
+    t.string "type", null: false
+    t.json "params"
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -114,12 +128,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_121719) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "conversations", "friendships"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
-  add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"

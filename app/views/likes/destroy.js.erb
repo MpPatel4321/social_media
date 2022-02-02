@@ -1,1 +1,5 @@
-$(".post-<%=@post.id%>").html("<%= j render partial: 'like', :locals => {:post => @post} %>");
+<% if @type == "Post" %>
+	$(".post-<%=@post.id%>").html("<%= j render partial: 'like', :locals => {:post => @post} %>");
+<% else %>
+	$(".comment_like-<%=@post.id%>").html("<%= j render partial: 'like_comment', :locals => {:comment => @post} %>");
+<% end %>

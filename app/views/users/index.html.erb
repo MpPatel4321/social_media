@@ -9,7 +9,7 @@
               <% if (current_user.id != find_friend.id) %>
                 <tbody>
                   <tr>
-                    <th><%= link_to user_path(find_friend), class: "link_to", remote: (user != current_user) do %>
+                    <th><%= link_to user_path(find_friend), class: "link_to", remote: (find_friend != current_user) do %>
                           <%= render "profile_avatar", user: find_friend %>
                         <% end %>      
                           </th>

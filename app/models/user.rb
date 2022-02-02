@@ -11,5 +11,12 @@ class User < ApplicationRecord
   has_one :like, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :conversation, through: :friendships
+
+  after_commit :send_mail, on: :create
+
+  def send_mail
+    UserMailer.with(user: self).welcome_email.deliver_now
+  end
 
 end

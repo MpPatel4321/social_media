@@ -1,2 +1,7 @@
-$(".comment_form").html("<%= j render partial: "form" %>");
-$(".comment_form").show()
+<% if @commentable_type == "Post" %>
+	$(".comment_form-<%=@commentable.id%>").html("<%= j render partial: "form" %>");
+	$(".comment_form-<%=@commentable.id%>").show()
+<% else %>
+	$(".comment_comment_form-<%=@commentable.id%>").html("<%= j render partial: "form" %>");
+	$(".comment_comment_form-<%=@commentable.id%>").show()
+<% end %>

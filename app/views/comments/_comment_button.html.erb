@@ -1,4 +1,4 @@
-<%= link_to new_comment_path(post_id: post.id), remote: true,  class: "navbar-brand comment-#{post.id}" do %>
+<%= link_to new_comment_path(id: post.id, type: "Post"), remote: true,  class: "navbar-brand comment-#{post.id}" do %>
   <image src="/assets/comment.png" class="avatar float-left">
   <%= post.comments.count %>
 <% end %>

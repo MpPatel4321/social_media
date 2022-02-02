@@ -3,9 +3,6 @@ class FriendshipsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @friends = Friendship.where( friend_id: params[:user_id], is_friend: true)
-    @friends1 = Friendship.where( user_id: params[:user_id], is_friend: true)
-    @friends = @friends + @friends1
   end
 
   def create

@@ -10,7 +10,7 @@
                     <li class="nav-item" >
                       <%= render 'likes/like', post: post %>
                       <%= render 'comments/comment_button', post: post %>
-                      <% if @user.nil? || current_user == @user %>
+                      <% if current_user == @user %>
                         <%= link_to 'Show Post', post_path(post) %>
                       <% end %>
                     </li>
@@ -19,12 +19,11 @@
             </td>
           </tr>
           <tr><td>
-            <div class="comment_form"></div>
+            <div class="comment_form-<%=post.id%>" style="align: center;" ></div>
             <ul class="index_comment-<%=post.id%>">
-            <%= render post.comments.last(3) %>
+              <%= render post.comments.last(3) %>
             </ul>
           </td></tr>
-
         </tbody>
       </table>
     </div><hr>
