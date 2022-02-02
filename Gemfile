@@ -6,6 +6,9 @@ ruby '2.7.4'
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 gem 'devise'
+gem "letter_opener", group: :development
+gem 'sidekiq', '~> 6.1.3'
+gem 'whenever', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
@@ -60,3 +63,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "turbo-rails"
+
+gem "noticed", "~> 1.5"

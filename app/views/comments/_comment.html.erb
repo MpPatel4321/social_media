@@ -1,10 +1,15 @@
-<li>
-<ul>
-<li><b><%= full_name(comment.user) %></b></li>
-		    <li><%= comment.comment %></li>
-		    <li style="font-size: 64%;"><%= comment.created_at %></li></ul></li>
+<li><ul><li><b><%= full_name(comment.user) %></b></li>
+		    <li><%= comment.content %></li>
+		    <li style="font-size: 64%;"><%= comment.created_at %></li>
+		  	<li><%= render 'likes/like_comment', comment: comment %></li>
+		  	<li><%= render 'comments/comment_link', comment: comment %></li></ul>
+					<div class="comment_comment_form-<%=comment.id%>" style="align: center;" ></div>
+        <ul class="index_comment_comment-<%=comment.id%>">
+          <%= render comment.comments.last(2) %>
+        </ul></li>
 <style>
 li {
   display:inline;
 }
+
 </style>

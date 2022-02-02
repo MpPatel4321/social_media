@@ -1,6 +1,7 @@
 <%= form_for @comment, remote: true do |f| %>
-  <%= f.text_field :comment, autocomplete: 'off', id: "text" %>
+  <%= f.text_field :content, autocomplete: 'off', id: "text" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.hidden_field :commentable_id, value: @commentable.id %>
+  <%= f.hidden_field :commentable_type, value: @commentable_type %>
   <%= f.submit "Comment", data: { disable_with: false }, class: "btn" %>
 <% end %>

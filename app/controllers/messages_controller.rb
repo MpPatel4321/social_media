@@ -10,9 +10,9 @@ class MessagesController < ApplicationController
     if (Conversation.where(friendship_id: params[:id]).blank?)
       @conversation = Conversation.create(friendship_id: params[:id])
     end
-    conversation = Conversation.where(friendship_id: params[:id])
-    @messages = Message.where(conversation_id: conversation[0].id)
-    @conversation = Conversation.find(conversation[0].id)
+    conversation = Conversation.find_by(friendship_id: params[:id])
+    @messages = Message.where(conversation_id: conversation.id)
+    @conversation = Conversation.find(conversation.id)
     @friendship = @conversation.friendship
     @message = Message.new
   end

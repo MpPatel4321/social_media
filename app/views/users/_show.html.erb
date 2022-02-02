@@ -19,7 +19,7 @@
           <tbody>
               <tr>
                 <th> Name </th>
-                <td><%= @user.first_name %> <%= @user.last_name %></td>
+                <td><%= full_name(@user) %></td>
               </tr>
               <tr>
                 <th> Email </th>
@@ -30,7 +30,7 @@
                 <td><%= @user.dob.strftime("%d %B %Y") %></td>
               </tr>
               <tr>
-                <th> Email </th>
+                <th> Mobile No. </th>
                 <td><%= @user.country_code %> <%= @user.mob_no %></td>
               </tr>
           </tbody>

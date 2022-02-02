@@ -17,6 +17,13 @@ module ApplicationHelper
     full_name = user.first_name + " " + user.last_name
   end
 
+  def user_friendship(id)
+    @friends = Friendship.where( friend_id: id, is_friend: true)
+    @friends += Friendship.where( user_id: id, is_friend: true)
+    
+    @friends
+  end
+
   def recent_conversation(friends)
   	arrange = []
   	no_chats = []

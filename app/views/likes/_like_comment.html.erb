@@ -1,0 +1,9 @@
+<% if (comment.likes.where(user_id: current_user.id)).blank? %>
+  <%= link_to likes_path(:post_id => comment.id, :type => "Comment"), method: :post, class: "navbar-brand a comment_like-#{comment.id}", remote: true do %>
+    Like <%= comment.likes.count %>
+  <% end %>
+<% else %>
+  <%= link_to like_path(comment.id, :type => "Comment"), method: :delete, class: "navbar-brand a comment_like-#{comment.id}", remote: true do %>
+    Unlike  <%= comment.likes.count %>
+  <% end %>
+<% end %>

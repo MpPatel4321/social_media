@@ -1,7 +1,17 @@
-$(".comment-<%=@post.id%>").html("<%= j render partial: 'comment_button', :locals => {:post => @post} %>");
-$(".show_comment-<%=@post.id%>").append("<%= j render partial: 'comment', :locals => {:comment => @post.comments.last} %>");
-$(".index_comment-<%=@post.id%>").append("<%= j render partial: 'comment', :locals => {:comment => @post.comments.last} %>");
-$(".comment_form").hide();
-<% if @post.comments.count > 3 %>
-	$(".index_comment-<%=@post.id%> li:first").remove();
+<% if @commentable_type == "Post" %>
+	$(".comment-<%=@post.id%>").html("<%= j render partial: 'comment_button', :locals => {:post => @post} %>");
+	$(".show_comment-<%=@post.id%>").append("<%= j render partial: 'comment', :locals => {:comment => @post.comments.last} %>");
+	$(".index_comment-<%=@post.id%>").append("<%= j render partial: 'comment', :locals => {:comment => @post.comments.last} %>");
+	$(".comment_form-<%=@post.id%>").hide();
+	<% if @post.comments.count > 3 %>
+		$(".index_comment-<%=@post.id%> li:first").remove();
+	<% end %>
+<% else %>
+	$(".comment_comment-<%=@current_comment.id%>").html("<%= j render partial: 'comment_link', :locals => {:comment => @current_comment} %>");
+	$(".show_comment_comment-<%=@current_comment.id%>").append("<%= j render partial: 'comment', :locals => {:comment => @current_comment.comments.last} %>");
+	$(".index_comment_comment-<%=@current_comment.id%>").append("<%= j render partial: 'comment', :locals => {:comment => @current_comment.comments.last} %>");
+	$(".comment_comment_form-<%=@current_comment.id%>").hide();
+	<% if @current_comment.comments.count > 2 %>
+		$(".index_comment_comment-<%=@current_comment.id%> li:first").remove();
+	<% end %>
 <% end %>

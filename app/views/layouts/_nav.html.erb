@@ -13,10 +13,8 @@
     </li>
   <% end %>
   <li class="nav-item <%= active(friendships_path) %>">
-    <% friend_count = Friendship.where(user_id: user.id, is_friend: true).count %>
-    <% friend_count += Friendship.where(friend_id: user.id, is_friend: true).count %>
     <%= link_to friendships_path(:user_id => user.id), remote: (user != current_user), class: "nav-link #{friendships_path}" do %>
-      Friends (<%= friend_count %>)
+      Friends (<%= user_friendship(user.id).count %>)
      <% end %>
   </li>
   <li class="nav-item <%= active(posts_path) %>">
