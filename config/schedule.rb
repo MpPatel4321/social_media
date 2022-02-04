@@ -18,10 +18,12 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+# whenever --update-crontab --set environment='development'
+# Sidekiq.redis(&:flushdb)
 
 job_type :sidekiq, "cd :path && :environment_variable=:environment bundle exec sidekiq-client push :task :output"
 
-every 1.minute do
+every 1.day do
   rake 'betch:send_birthday_wishesh'
 end
 # every 1.day do
