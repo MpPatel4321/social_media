@@ -48,6 +48,11 @@
               <% end %>
             </li>
             <li class="nav-item">
+              <%= link_to messages_path(nav_bar: false), class: "nav-link" do %>
+                <div><image src="/assets/messages.png" class="avatar float-left"></div>
+              <% end %>
+            </li>
+            <li class="nav-item">
               <%= link_to user_path(current_user), class: "nav-link" do %>
                 <image src="/assets/my_account.png" class="avatar float-left"> 
               <% end %>

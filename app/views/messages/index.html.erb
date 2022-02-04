@@ -1,5 +1,7 @@
-<%= render 'layouts/nav', user: current_user %>
-<div class='clearfix'></div><hr>
+<% if @nav_bar == "true" %> 
+  <%= render 'layouts/nav', user: current_user %> 
+  <div class='clearfix'></div><hr>
+<% end %>
 <div class="row" >
   <div class="col-md-6">
     <div class="show_post">

@@ -16,7 +16,7 @@ class User < ApplicationRecord
   after_commit :send_mail, on: :create
 
   def send_mail
-    UserMailer.with(user: self).welcome_email.deliver_now
+    UserMailer.welcome_email(self).deliver_now
   end
 
 end
