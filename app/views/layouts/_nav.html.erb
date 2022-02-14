@@ -9,7 +9,7 @@
   </li>
   <% if (user.id == current_user.id) %>
     <li class="nav-item <%= active(messages_path) %>">
-      <%= link_to 'Messages', messages_path, class: "nav-link" %>
+      <%= link_to 'Messages', messages_path(nav_bar: true), class: "nav-link" %>
     </li>
   <% end %>
   <li class="nav-item <%= active(friendships_path) %>">

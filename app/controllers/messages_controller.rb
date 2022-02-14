@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def index
     @friends = Friendship.where(user_id: current_user.id, is_friend: true).ordered
     @friends += Friendship.where(friend_id: current_user.id, is_friend: true).ordered
-    
+    @nav_bar = params[:nav_bar]
   end
 
   def show
