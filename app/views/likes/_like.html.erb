@@ -1,10 +1,10 @@
 <% if (post.likes.where(user_id: current_user.id)).blank? %>
-  <%= link_to likes_path(:post_id => post.id, :type => "Post"), method: :post, class: "navbar-brand post-#{post.id}", remote: true do %>
+  <%= link_to likes_path(id: post.id, type: "Post"), method: :post, class: "navbar-brand post-#{post.id}", remote: true do %>
     <image src="/assets/like.png" class="avatar float-left">
     <%= post.likes.count %>
   <% end %>
 <% else %>
-  <%= link_to like_path(post.id, :type => "Post"), method: :delete, class: "navbar-brand post-#{post.id}", remote: true do %>
+  <%= link_to like_path(post.id, type: "Post"), method: :delete, class: "navbar-brand post-#{post.id}", remote: true do %>
     <image src="/assets/unlike.png" class="avatar float-left">
     <%= post.likes.count %>
   <% end %>

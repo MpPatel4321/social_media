@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/admin/sidekiq'
   # get 'posts/index'
   devise_for :users
   root to: 'deshboard#index'

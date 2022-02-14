@@ -3,10 +3,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>You have new login in Social site</h1>
+    <h1>You have new log in to socialmidea.com, <%= @user.first_name %> <%= @user.last_name %></h1>
     <p>
-      Is not you then change your password in this site <%= @url %>
+      You have successfully login to socialmedia.com <br>
+      log-in time: <%= @user.last_sign_in_at.strftime("%H:%M:%S") %>.<br>
+      log-in System IP : <%= @user.last_sign_in_ip %>.<br>
     </p>
-    <p>Have a great day!</p>
+    <p>
+      it is not you then please change your password: <%= @url %>.
+    </p>
+    <p>Thanks for login and have a great day!</p>
   </body>
 </html>

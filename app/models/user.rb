@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
 
   has_one_attached :avatar, dependent: :destroy
   has_many :friendships, class_name: "Friendship", dependent: :destroy  
@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :conversation, through: :friendships
 
   after_commit :send_mail, on: :create
+  
 
   def send_mail
     UserMailer.welcome_email(self).deliver_now
