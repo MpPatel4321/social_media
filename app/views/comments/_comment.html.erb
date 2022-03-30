@@ -5,7 +5,11 @@
 		  	<li><%= render 'comments/comment_link', comment: comment %></li></ul>
 					<div class="comment_comment_form-<%=comment.id%>" style="align: center;" ></div>
         <ul class="index_comment_comment-<%=comment.id%>">
-          <%= render comment.comments.last(2) %>
+        	<% if action_name != "show" %>
+          	<%= render comment.comments.last(2) %>
+          <% else %>
+          	<%= render comment.comments %>
+          <% end %>
         </ul></li>
 <style>
 li {
